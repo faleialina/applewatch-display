@@ -4,27 +4,33 @@
 // Составляющие проекта:
 // querySelector; innerHTML; new Date; setInterval / setTimeout
 
-const time = document.getElementById('time');
-
-function doTime() {
-  let date = new Date();
-  let hours = date.getHours().toString();
-  let minutes = date.getMinutes().toString();
-  let seconds = date.getSeconds().toString();
-
-  if (hours.length < 2) {
-    hours = `0` + hours;
+class Time {
+  constructor() {
+    this.time = document.getElementById('time');
+    setInterval(this.doTime, 1000)
   }
-  if (minutes.length < 2) {
-    minutes = `0` + minutes;
-  }
-  if (seconds.length < 2) {
-    seconds = `0` + seconds;
-  }
+  doTime() {
+    let date = new Date();
+    let hours = date.getHours().toString();
+    let minutes = date.getMinutes().toString();
+    let seconds = date.getSeconds().toString();
+    let year = date.getFullYear().toString();
 
-  let clockString = hours + `:` + minutes + `:` + seconds;
-  time.textContent = clockString;
+    hours.length < 2 ? hours = `0` + hours : null;
+    minutes.length < 2 ? minutes = `0` + minutes : null;
+    seconds.length < 2 ? seconds = `0` + seconds : null;
+
+
+    let clockString = hours + `:` + minutes + `:` + seconds;
+    this.time.textContent = clockString;
+
+    document.querySelector('.date p').innerHTML = year;
+  }
 }
+const time = new Time();
 
-setInterval(doTime, 1000)
+
+
+
+
 
