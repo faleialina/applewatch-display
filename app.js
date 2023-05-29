@@ -7,8 +7,9 @@
 class Time {
   constructor() {
     this.time = document.getElementById('time');
-    setInterval(this.doTime, 1000)
+    setInterval(this.doTime, 1000);
   }
+  
   doTime() {
     let date = new Date();
     let hours = date.getHours().toString();
@@ -19,7 +20,6 @@ class Time {
     hours.length < 2 ? hours = `0` + hours : null;
     minutes.length < 2 ? minutes = `0` + minutes : null;
     seconds.length < 2 ? seconds = `0` + seconds : null;
-
 
     let clockString = hours + `:` + minutes + `:` + seconds;
     this.time.textContent = clockString;
